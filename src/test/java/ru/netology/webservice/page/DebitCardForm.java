@@ -30,60 +30,52 @@ public class DebitCardForm {
 
     // Сообщения от сервиса
     public void successNotificationForm() {
-        successNotification.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Операция одобрена Банком."));
+        successNotification.shouldBe(visible).shouldHave(text("Операция одобрена Банком."));
     }
 
     public void errorNotificationForm() {
-        errorNotification.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Ошибка! Банк отказал в проведении операции."));
+        errorNotification.shouldBe(visible).shouldHave(text("Ошибка! Банк отказал в проведении операции."));
     }
 
     //Сообщения при заполнении поля "Номер карты"
 
     public void errorMessageInvalidCardNumberField() {
-        errorMessageCardNumberField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Неверный формат"));
+        errorMessageCardNumberField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-    public void errorMessageCardNumberFieldEmpty() {
-        errorMessageCardNumberField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Поле обязательно для заполнения"));
-    }
+
 
     //Сообщения при заполнении поля "Месяц"
 
     public void errorMessageInvalidMonthField() {
-        errorMessageMonthField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Неверный формат"));
+        errorMessageMonthField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-    public void errorMessageExpiredOrNonexistentMonth () {
-        errorMessageMonthField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Неверно указан срок действия карты"));
-    }
+
 
     public void errorMessageMonthFieldEmpty() {
-        errorMessageMonthField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Поле обязательно для заполнения"));
+        errorMessageMonthField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
     }
 
     //Сообщения при заполнении поля "Год"
 
     public void errorMessageInvalidYearField() {
-        errorMessageYearField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Неверный формат"));
+        errorMessageYearField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-    public void errorMessageExpiredYear() {
-        errorMessageYearField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Истёк срок действия карты"));
-    }
+
 
     public void errorMessageYearFieldEmpty() {
-        errorMessageYearField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Поле обязательно для заполнения"));
+        errorMessageYearField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
     }
 
     //Сообщения при заполнении поля "Владелец"
 
     public void errorMessageInvalidOwnerField() {
-        errorMessageOwnerField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Неверный формат"));
+        errorMessageOwnerField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-    public void errorMessageOwnerFieldEmpty() {
-        errorMessageOwnerField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Поле обязательно для заполнения"));
-    }
+
 
     public void errorMessageOwnerFieldEmptyWhenCVCTest() {
         errorMessageOwnerField.shouldNotBe(visible);
@@ -92,12 +84,10 @@ public class DebitCardForm {
     //Сообщения при заполнении поля "CVC"
 
     public void errorMessageInvalidCodeField() {
-        errorMessageCodeField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Неверный формат"));
+        errorMessageCodeField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-    public void errorMessageCodeFieldEmpty() {
-        errorMessageCodeField.shouldBe(visible, Duration.ofSeconds(15)).shouldHave(text("Поле обязательно для заполнения"));
-    }
+
 
 
     public void fillOutFields(String cardNumber, String month, String year, String owner, String code) {
