@@ -31,13 +31,13 @@ public class NegativeTestsForDebitForm {
     @BeforeEach
     void setup() {
         DatabaseHelper.clearDB();
-        open("http://localhost:8080/");
+        open("http://localhost:8080");
         MainPage mainPage = new MainPage();
         debitCardForm = mainPage.buyWithCard();
         debitCardForm.checkVisibleHeadingDebitCard();
     }
 
-
+    // Отправка пустой формы
     @Test
     void shouldNotBuyDebitWithEmptyForm() {
         Configuration.holdBrowserOpen = true;
@@ -46,16 +46,16 @@ public class NegativeTestsForDebitForm {
         var year = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var owner = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var code = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
-
+        debitCardForm.errorMessageCardNumberFieldEmpty();
         debitCardForm.errorMessageMonthFieldEmpty();
         debitCardForm.errorMessageYearFieldEmpty();
-
-
+        debitCardForm.errorMessageOwnerFieldEmpty();
+        debitCardForm.errorMessageCodeFieldEmpty();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
 
-
+    //  Тестирование поля "Месяц"
     @Test
     void shouldNotBuyDebitWithCardEmptyMonthField() {
         Configuration.holdBrowserOpen = true;
@@ -130,7 +130,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        debitCardForm.errorMessageExpiredOrNonexistentMonth();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -156,12 +156,12 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        debitCardForm.errorMessageExpiredOrNonexistentMonth();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
 
-
+    //  Тестирование поля "Год"
     @Test
     void shouldNotBuyDebitWithEmptyYearField() {
         Configuration.holdBrowserOpen = true;
@@ -184,7 +184,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        debitCardForm.errorMessageExpiredYear();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -223,7 +223,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        debitCardForm.errorMessageExpiredYear();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -241,7 +241,7 @@ public class NegativeTestsForDebitForm {
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
 
-
+    //  Тестирование поля "Владелец"
     @Test
     void shouldNotBuyDebitWithEmptyOwnerField() {
         Configuration.holdBrowserOpen = true;
@@ -251,7 +251,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        debitCardForm.errorMessageOwnerFieldEmpty();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -308,7 +308,7 @@ public class NegativeTestsForDebitForm {
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
 
-
+    //  Тестирование поля "Код"
     @Test
     void shouldNotBuyDebitWithEmptyCodeField() {
         Configuration.holdBrowserOpen = true;
@@ -318,7 +318,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        debitCardForm.errorMessageCodeFieldEmpty();
         debitCardForm.errorMessageOwnerFieldEmptyWhenCVCTest();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
@@ -366,7 +366,7 @@ public class NegativeTestsForDebitForm {
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
 
-
+    //  Тестирование поля "Номер карты"
     @Test
     void shouldNotBuyDebitWithEmptyCardNumberField() {
         Configuration.holdBrowserOpen = true;
@@ -376,7 +376,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        debitCardForm.errorMessageCardNumberFieldEmpty();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }

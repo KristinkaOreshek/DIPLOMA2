@@ -43,7 +43,9 @@ public class DebitCardForm {
         errorMessageCardNumberField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-
+    public void errorMessageCardNumberFieldEmpty() {
+        errorMessageCardNumberField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    }
 
     //Сообщения при заполнении поля "Месяц"
 
@@ -51,7 +53,9 @@ public class DebitCardForm {
         errorMessageMonthField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-
+    public void errorMessageExpiredOrNonexistentMonth () {
+        errorMessageMonthField.shouldBe(visible).shouldHave(text("Неверно указан срок действия карты"));
+    }
 
     public void errorMessageMonthFieldEmpty() {
         errorMessageMonthField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
@@ -63,7 +67,9 @@ public class DebitCardForm {
         errorMessageYearField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-
+    public void errorMessageExpiredYear() {
+        errorMessageYearField.shouldBe(visible).shouldHave(text("Истёк срок действия карты"));
+    }
 
     public void errorMessageYearFieldEmpty() {
         errorMessageYearField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
@@ -75,7 +81,9 @@ public class DebitCardForm {
         errorMessageOwnerField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-
+    public void errorMessageOwnerFieldEmpty() {
+        errorMessageOwnerField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    }
 
     public void errorMessageOwnerFieldEmptyWhenCVCTest() {
         errorMessageOwnerField.shouldNotBe(visible);
@@ -87,7 +95,9 @@ public class DebitCardForm {
         errorMessageCodeField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
-
+    public void errorMessageCodeFieldEmpty() {
+        errorMessageCodeField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    }
 
 
     public void fillOutFields(String cardNumber, String month, String year, String owner, String code) {

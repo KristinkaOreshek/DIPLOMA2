@@ -44,6 +44,9 @@ public class CreditCardForm {
         errorMessageCardNumberField.shouldBe(visible).shouldHave(text("Неверный формат"));
     }
 
+    public void errorMessageCardNumberFieldEmpty() {
+        errorMessageCardNumberField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    }
 
     //Сообщения при заполнении поля "Месяц"
 
@@ -55,7 +58,9 @@ public class CreditCardForm {
         errorMessageMonthField.shouldBe(visible).shouldHave(text("Неверно указан срок действия карты"));
     }
 
-
+    public void errorMessageMonthFieldEmpty() {
+        errorMessageMonthField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    }
 
     //Сообщения при заполнении поля "Год"
 
@@ -67,7 +72,9 @@ public class CreditCardForm {
         errorMessageYearField.shouldBe(visible).shouldHave(text("Истёк срок действия карты"));
     }
 
-
+    public void errorMessageYearFieldEmpty() {
+        errorMessageYearField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    }
 
     //Сообщения при заполнении поля "Владелец"
 
@@ -79,7 +86,9 @@ public class CreditCardForm {
         errorMessageOwnerField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
     }
 
-
+    public void errorMessageOwnerFieldEmptyWhenCVCTest() {
+        errorMessageOwnerField.shouldNotBe(visible);
+    }
 
     //поле CVC
 

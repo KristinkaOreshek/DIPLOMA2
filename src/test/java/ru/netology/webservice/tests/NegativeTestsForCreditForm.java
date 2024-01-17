@@ -46,9 +46,9 @@ public class NegativeTestsForCreditForm {
         var year = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var owner = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var code = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
-
-
-
+        creditCardForm.errorMessageCardNumberFieldEmpty();
+        creditCardForm.errorMessageMonthFieldEmpty();
+        creditCardForm.errorMessageYearFieldEmpty();
         creditCardForm.errorMessageOwnerFieldEmpty();
         creditCardForm.errorMessageCodeFieldEmpty();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
@@ -65,7 +65,7 @@ public class NegativeTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        creditCardForm.errorMessageMonthFieldEmpty();
         assertFalse(DatabaseHelper.tableCreditRequestHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -171,7 +171,7 @@ public class NegativeTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        creditCardForm.errorMessageYearFieldEmpty();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -319,7 +319,7 @@ public class NegativeTestsForCreditForm {
         var code = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
         creditCardForm.errorMessageCodeFieldEmpty();
-
+        creditCardForm.errorMessageOwnerFieldEmptyWhenCVCTest();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -333,7 +333,7 @@ public class NegativeTestsForCreditForm {
         var code = DataHelper.getInvalidFieldFormat(0, 0, 1, 0, 2);
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
         creditCardForm.errorMessageInvalidCodeField();
-
+        creditCardForm.errorMessageOwnerFieldEmptyWhenCVCTest();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -347,7 +347,7 @@ public class NegativeTestsForCreditForm {
         var code = DataHelper.getInvalidFieldFormat(0, 3, 0, 0, 0);
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
         creditCardForm.errorMessageInvalidCodeField();
-
+        creditCardForm.errorMessageOwnerFieldEmptyWhenCVCTest();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -361,7 +361,7 @@ public class NegativeTestsForCreditForm {
         var code = DataHelper.getInvalidFieldFormat(2, 0, 0, 0, 0);
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
         creditCardForm.errorMessageInvalidCodeField();
-
+        creditCardForm.errorMessageOwnerFieldEmptyWhenCVCTest();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -376,7 +376,7 @@ public class NegativeTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-
+        creditCardForm.errorMessageCardNumberFieldEmpty();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
