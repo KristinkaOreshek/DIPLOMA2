@@ -18,9 +18,9 @@ public class DatabaseHelper {
 
     @SneakyThrows
     public static void clearDB() {
-        try (
+
                 var conn = getConnection();
-        ) {
+                {
             var dataStmt = conn.prepareStatement("TRUNCATE credit_request_entity;");
             dataStmt.executeUpdate();
             dataStmt = conn.prepareStatement("TRUNCATE order_entity;");
@@ -34,13 +34,13 @@ public class DatabaseHelper {
     public static Integer getCountTableRows(String tableName) {
         var codeSQL = "SELECT count(*) as cnt FROM " + tableName + ";";
         var runner = new QueryRunner();
-        try (
+
                 var conn = getConnection();
-        ) {
+         {
             var dataStmt = conn.prepareStatement(codeSQL);
 
             Integer cnt = 0;
-            try (var rs = dataStmt.executeQuery()) {
+             var rs = dataStmt.executeQuery();{
                 if (rs.next()) {
                     cnt = rs.getInt("cnt");
                 }
@@ -71,13 +71,13 @@ public class DatabaseHelper {
     public static String getTransactionStatus(String tableName) {
         var codeSQL = "SELECT status FROM " + tableName + " LIMIT 1;";
         var runner = new QueryRunner();
-        try (
+
                 var conn = getConnection();
-        ) {
+        {
             var dataStmt = conn.prepareStatement(codeSQL);
 
             String status = "";
-            try (var rs = dataStmt.executeQuery()) {
+            var rs = dataStmt.executeQuery(); {
                 if (rs.next()) {
                     status = rs.getString("status");
                 }
