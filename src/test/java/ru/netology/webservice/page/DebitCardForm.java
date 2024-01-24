@@ -24,65 +24,65 @@ public class DebitCardForm {
     private SelenideElement errorMessageOwnerField = $(byText("Владелец")).parent().$(".input__sub");
     private SelenideElement errorMessageCodeField = $(byText("CVC/CVV")).parent().$(".input__sub");
 
-    public void checkVisibleHeadingDebitCard() {
-        headingCardType.shouldBe(visible).shouldHave(text("Оплата по карте"));
+    public void checkVisibleHeadingDebitCard(String headingCard) {
+        headingCardType.shouldBe(visible).shouldHave(text(headingCard));
     }
 
     // Сообщения от сервиса
-    public void successNotificationForm() {
-        successNotification.shouldBe(visible).shouldHave(text("Операция одобрена Банком."));
+    public void successNotificationForm(String successNote) {
+        successNotification.shouldBe(visible).shouldHave(text(successNote));
     }
 
-    public void errorNotificationForm() {
-        errorNotification.shouldBe(visible).shouldHave(text("Ошибка! Банк отказал в проведении операции."));
+    public void errorNotificationForm(String errorNote) {
+        errorNotification.shouldBe(visible).shouldHave(text(errorNote));
     }
 
     //Сообщения при заполнении поля "Номер карты"
 
-    public void errorMessageInvalidCardNumberField() {
-        errorMessageCardNumberField.shouldBe(visible).shouldHave(text("Неверный формат"));
+    public void errorMessageInvalidCardNumberField(String errorNote) {
+        errorMessageCardNumberField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
-    public void errorMessageCardNumberFieldEmpty() {
-        errorMessageCardNumberField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    public void errorMessageCardNumberFieldEmpty(String errorNote) {
+        errorMessageCardNumberField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
     //Сообщения при заполнении поля "Месяц"
 
-    public void errorMessageInvalidMonthField() {
-        errorMessageMonthField.shouldBe(visible).shouldHave(text("Неверный формат"));
+    public void errorMessageInvalidMonthField(String errorNote) {
+        errorMessageMonthField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
-    public void errorMessageExpiredOrNonexistentMonth () {
-        errorMessageMonthField.shouldBe(visible).shouldHave(text("Неверно указан срок действия карты"));
+    public void errorMessageExpiredOrNonexistentMonth(String errorNote) {
+        errorMessageMonthField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
-    public void errorMessageMonthFieldEmpty() {
-        errorMessageMonthField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    public void errorMessageMonthFieldEmpty(String errorNote) {
+        errorMessageMonthField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
     //Сообщения при заполнении поля "Год"
 
-    public void errorMessageInvalidYearField() {
-        errorMessageYearField.shouldBe(visible).shouldHave(text("Неверный формат"));
+    public void errorMessageInvalidYearField(String errorNote) {
+        errorMessageYearField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
-    public void errorMessageExpiredYear() {
-        errorMessageYearField.shouldBe(visible).shouldHave(text("Истёк срок действия карты"));
+    public void errorMessageExpiredYear(String errorNote) {
+        errorMessageYearField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
-    public void errorMessageYearFieldEmpty() {
-        errorMessageYearField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    public void errorMessageYearFieldEmpty(String errorNote) {
+        errorMessageYearField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
     //Сообщения при заполнении поля "Владелец"
 
-    public void errorMessageInvalidOwnerField() {
-        errorMessageOwnerField.shouldBe(visible).shouldHave(text("Неверный формат"));
+    public void errorMessageInvalidOwnerField(String errorNote) {
+        errorMessageOwnerField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
-    public void errorMessageOwnerFieldEmpty() {
-        errorMessageOwnerField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    public void errorMessageOwnerFieldEmpty(String errorNote) {
+        errorMessageOwnerField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
     public void errorMessageOwnerFieldEmptyWhenCVCTest() {
@@ -91,12 +91,12 @@ public class DebitCardForm {
 
     //Сообщения при заполнении поля "CVC"
 
-    public void errorMessageInvalidCodeField() {
-        errorMessageCodeField.shouldBe(visible).shouldHave(text("Неверный формат"));
+    public void errorMessageInvalidCodeField(String errorNote) {
+        errorMessageCodeField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
-    public void errorMessageCodeFieldEmpty() {
-        errorMessageCodeField.shouldBe(visible).shouldHave(text("Поле обязательно для заполнения"));
+    public void errorMessageCodeFieldEmpty(String errorNote) {
+        errorMessageCodeField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
 

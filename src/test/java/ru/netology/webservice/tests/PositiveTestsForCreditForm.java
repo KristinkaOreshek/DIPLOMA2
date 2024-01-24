@@ -31,7 +31,7 @@ public class PositiveTestsForCreditForm {
         open("http://localhost:8080");
         MainPage mainPage = new MainPage();
         creditCardForm = mainPage.buyWithCredit();
-        creditCardForm.checkVisibleHeadingCreditCard();
+        creditCardForm.checkVisibleHeadingCreditCard("Кредит по данным карты");
     }
 
     @Test
@@ -43,7 +43,7 @@ public class PositiveTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        creditCardForm.successNotificationForm();
+        creditCardForm.successNotificationForm("Операция одобрена Банком.");
         assertTrue(DatabaseHelper.tableCreditRequestHasRows());
         assertEquals("APPROVED", DatabaseHelper.getTransactionCreditRequestStatus());
     }
@@ -57,7 +57,7 @@ public class PositiveTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        creditCardForm.errorNotificationForm();
+        creditCardForm.errorNotificationForm("Ошибка! Банк отказал в проведении операции.");
         assertTrue(DatabaseHelper.tableCreditRequestHasRows());
         assertEquals("DECLINED", DatabaseHelper.getTransactionCreditRequestStatus());
     }

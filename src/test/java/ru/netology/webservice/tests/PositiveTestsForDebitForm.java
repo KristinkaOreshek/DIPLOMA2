@@ -33,7 +33,7 @@ public class PositiveTestsForDebitForm {
         open("http://localhost:8080");
         MainPage mainPage = new MainPage();
         debitCardForm = mainPage.buyWithCard();
-        debitCardForm.checkVisibleHeadingDebitCard();
+        debitCardForm.checkVisibleHeadingDebitCard("Оплата по карте");
     }
 
     @Test
@@ -45,7 +45,7 @@ public class PositiveTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        debitCardForm.successNotificationForm();
+        debitCardForm.successNotificationForm("Операция одобрена Банком.");
         assertTrue(DatabaseHelper.tablePaymentHasRows());
         assertEquals("APPROVED", DatabaseHelper.getTransactionPaymentStatus());
     }
@@ -59,7 +59,7 @@ public class PositiveTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        debitCardForm.errorNotificationForm();
+        debitCardForm.errorNotificationForm("Ошибка! Банк отказал в проведении операции.");
         assertTrue(DatabaseHelper.tablePaymentHasRows());
         assertEquals("DECLINED", DatabaseHelper.getTransactionPaymentStatus());
     }
