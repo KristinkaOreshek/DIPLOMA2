@@ -46,10 +46,10 @@ public class NegativeTestsForCreditForm {
         var year = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var owner = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var code = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
-        creditCardForm.errorMessageMonthFieldEmpty("Неверный формат");
-        creditCardForm.errorMessageYearFieldEmpty("Неверный формат");
-        creditCardForm.errorMessageOwnerFieldEmpty("Поле обязательно для заполнения");
-        creditCardForm.errorMessageCodeFieldEmpty("Неверный формат");
+        creditCardForm.errorMessageInvalidMonthField("Неверный формат");
+        creditCardForm.errorMessageInvalidYearField("Неверный формат");
+        creditCardForm.errorMessageInvalidOwnerField("Поле обязательно для заполнения");
+        creditCardForm.errorMessageInvalidCodeField("Неверный формат");
         creditCardForm.errorMessageInvalidCardNumberField("Неверный формат");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
@@ -93,7 +93,7 @@ public class NegativeTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        creditCardForm.errorMessageExpiredOrNonexistentMonth("Неверно указан срок действия карты");
+        creditCardForm.errorMessageInvalidMonthField("Неверно указан срок действия карты");
         assertFalse(DatabaseHelper.tableCreditRequestHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -132,7 +132,7 @@ public class NegativeTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        creditCardForm.errorMessageExpiredOrNonexistentMonth("Неверно указан срок действия карты");
+        creditCardForm.errorMessageInvalidMonthField("Неверно указан срок действия карты");
         assertFalse(DatabaseHelper.tableCreditRequestHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -148,7 +148,7 @@ public class NegativeTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        creditCardForm.errorMessageExpiredYear("Истёк срок действия карты");
+        creditCardForm.errorMessageInvalidYearField("Истёк срок действия карты");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -175,7 +175,7 @@ public class NegativeTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        creditCardForm.errorMessageExpiredYear("Истёк срок действия карты");
+        creditCardForm.errorMessageInvalidYearField("Истёк срок действия карты");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -203,7 +203,7 @@ public class NegativeTestsForCreditForm {
         var owner = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var code = DataHelper.getValidCode();
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        creditCardForm.errorMessageOwnerFieldEmpty("Поле обязательно для заполнения");
+        creditCardForm.errorMessageInvalidOwnerField("Поле обязательно для заполнения");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -270,7 +270,7 @@ public class NegativeTestsForCreditForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         creditCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        creditCardForm.errorMessageCodeFieldEmpty("Поле обязательно для заполнения");
+        creditCardForm.errorMessageInvalidCodeField("Поле обязательно для заполнения");
         creditCardForm.errorMessageOwnerFieldEmptyWhenCVCTest();
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());

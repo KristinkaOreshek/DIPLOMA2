@@ -46,11 +46,11 @@ public class NegativeTestsForDebitForm {
         var year = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var owner = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var code = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
-        debitCardForm.errorMessageCardNumberFieldEmpty("Поле обязательно для заполнения");
-        debitCardForm.errorMessageMonthFieldEmpty("Поле обязательно для заполнения");
-        debitCardForm.errorMessageYearFieldEmpty("Поле обязательно для заполнения");
-        debitCardForm.errorMessageOwnerFieldEmpty("Поле обязательно для заполнения");
-        debitCardForm.errorMessageCodeFieldEmpty("Поле обязательно для заполнения");
+        debitCardForm.errorMessageInvalidCardNumberField("Поле обязательно для заполнения");
+        debitCardForm.errorMessageInvalidMonthField("Поле обязательно для заполнения");
+        debitCardForm.errorMessageInvalidYearField("Поле обязательно для заполнения");
+        debitCardForm.errorMessageInvalidOwnerField("Поле обязательно для заполнения");
+        debitCardForm.errorMessageInvalidCodeField("Поле обязательно для заполнения");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -93,7 +93,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        debitCardForm.errorMessageExpiredOrNonexistentMonth("Неверно указан срок действия карты");
+        debitCardForm.errorMessageInvalidMonthField("Неверно указан срок действия карты");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -119,7 +119,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        debitCardForm.errorMessageExpiredOrNonexistentMonth("Неверно указан срок действия карты");
+        debitCardForm.errorMessageInvalidMonthField("Неверно указан срок действия карты");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -135,7 +135,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        debitCardForm.errorMessageExpiredYear("Истёк срок действия карты");
+        debitCardForm.errorMessageInvalidYearField("Истёк срок действия карты");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -162,7 +162,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getOwner("en");
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        debitCardForm.errorMessageExpiredYear("Истёк срок действия карты");
+        debitCardForm.errorMessageInvalidYearField("Истёк срок действия карты");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }
@@ -190,7 +190,7 @@ public class NegativeTestsForDebitForm {
         var owner = DataHelper.getInvalidFieldFormat(0, 0, 0, 0, 0);
         var code = DataHelper.getValidCode();
         debitCardForm.fillOutFields(cardNumber, month, year, owner, code);
-        debitCardForm.errorMessageOwnerFieldEmpty("Поле обязательно для заполнения");
+        debitCardForm.errorMessageInvalidOwnerField("Поле обязательно для заполнения");
         assertFalse(DatabaseHelper.tablePaymentHasRows());
         assertFalse(DatabaseHelper.tableOrderHasRows());
     }

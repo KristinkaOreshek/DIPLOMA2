@@ -43,21 +43,9 @@ public class DebitCardForm {
         errorMessageCardNumberField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
-    public void errorMessageCardNumberFieldEmpty(String errorNote) {
-        errorMessageCardNumberField.shouldBe(visible).shouldHave(text(errorNote));
-    }
-
     //Сообщения при заполнении поля "Месяц"
 
     public void errorMessageInvalidMonthField(String errorNote) {
-        errorMessageMonthField.shouldBe(visible).shouldHave(text(errorNote));
-    }
-
-    public void errorMessageExpiredOrNonexistentMonth(String errorNote) {
-        errorMessageMonthField.shouldBe(visible).shouldHave(text(errorNote));
-    }
-
-    public void errorMessageMonthFieldEmpty(String errorNote) {
         errorMessageMonthField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
@@ -67,21 +55,9 @@ public class DebitCardForm {
         errorMessageYearField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
-    public void errorMessageExpiredYear(String errorNote) {
-        errorMessageYearField.shouldBe(visible).shouldHave(text(errorNote));
-    }
-
-    public void errorMessageYearFieldEmpty(String errorNote) {
-        errorMessageYearField.shouldBe(visible).shouldHave(text(errorNote));
-    }
-
     //Сообщения при заполнении поля "Владелец"
 
     public void errorMessageInvalidOwnerField(String errorNote) {
-        errorMessageOwnerField.shouldBe(visible).shouldHave(text(errorNote));
-    }
-
-    public void errorMessageOwnerFieldEmpty(String errorNote) {
         errorMessageOwnerField.shouldBe(visible).shouldHave(text(errorNote));
     }
 
@@ -94,11 +70,6 @@ public class DebitCardForm {
     public void errorMessageInvalidCodeField(String errorNote) {
         errorMessageCodeField.shouldBe(visible).shouldHave(text(errorNote));
     }
-
-    public void errorMessageCodeFieldEmpty(String errorNote) {
-        errorMessageCodeField.shouldBe(visible).shouldHave(text(errorNote));
-    }
-
 
     public void fillOutFields(String cardNumber, String month, String year, String owner, String code) {
         cardNumberField.setValue(cardNumber);
